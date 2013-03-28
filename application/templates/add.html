@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% import 'forms.html' as f %}
+
+{% block content %}
+<form class="form-horizontal" action="/add" method="POST">
+    <fieldset>
+        <legend>Controls Bootstrap supports</legend>
+        {{ f.form_field(form.title, class='input-xlarge', help='Help!') }}
+        {{ f.form_field(form.description, class='input-xlarge') }}
+        {{ f.form_field(form.active) }}
+        {{ form.csrf_token }}
+        {{ f.action_buttons() }}
+    </fieldset>
+</form>
+{% endblock %}

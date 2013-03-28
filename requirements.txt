@@ -1,0 +1,6 @@
+Flask
+Flask-Fanstatic
+js.bootstrap
+js.jquery
+flask-mongoengine
+Flask-SuperAdmin

@@ -1,0 +1,69 @@
+<!-- https://gist.github.com/abulte/5264753 -->
+
+{%- macro form_field_label(field) -%}
+    <label class="control-label" for="{{ field.id }}">{{ field.label.text }}
+    {%- if field.flags.required -%}
+        <abbr title="Required"> *</abbr>
+    {%- endif %}</label>
+{% endmacro %}
+
+{%- macro form_field_help(help) -%}
+    <p class="help-block">{{ help }}</p>
+{%- endmacro -%}
+
+{%- macro form_field_errors(field) -%}
+    {% if field.errors %}
+    <div>
+        {%- for error in field.errors -%}
+        <span class="label label-important">{{ error }}</span>
+        {%- endfor -%}
+    </div>
+    {% endif %}
+{%- endmacro -%}
+
+{%- macro action_buttons(submit_title="Save changes", 
+                         cancel_title="Cancel", 
+                         submit_class="btn-primary") -%}
+<div class="form-actions">
+    <input type="submit" class="btn {{submit_class}}" value="{{submit_title}}">
+    <button type="reset" class="btn">{{cancel_title}}</button>
+</div>
+{%- endmacro -%}
+
+{%- macro form_field(field, class='', help=None) -%}
+    {% if field.type == 'HiddenField' %}
+        {{ field() }}
+    {% else %}
+        <div class="control-group {% if field.errors %}error{% endif %}">
+            {{ form_field_label(field) }}
+            <div class="controls">
+                {% if field.type == 'RadioField' %}
+                <label class="radio">
+                    {{ field(class=class, **kwargs) }}
+                </label>
+                {% elif field.type == 'BooleanField' %}
+                <label class="checkbox">
+                    {{ field(class=class, **kwargs) }}
+                </label>
+                {% else %}
+                {{ field(class=class, **kwargs) }}
+                {% endif %}
+                {{ form_field_errors(field) }}
+                {% if help %}
+                    {{ form_field_help(help) }}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %} 
+{%- endmacro -%}
+
+{%- macro form_fields(fields, class=None, legend=None) -%}
+    <fieldset {% if class %}class="{{class}}"{% endif %}>
+        {% if legend %}
+            <legend>{{legend}}</legend>
+        {% endif %}
+    {% for field in fields %}
+        {{ form_field(field) }}
+    {% endfor %}
+  </fieldset>
+{%- endmacro -%}
