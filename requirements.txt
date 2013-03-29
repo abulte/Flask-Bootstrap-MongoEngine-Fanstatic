@@ -2,5 +2,7 @@ Flask
 Flask-Fanstatic
 js.bootstrap
 js.jquery
-flask-mongoengine
+Flask-Mongoengine
 Flask-SuperAdmin
+Flask-Login
+Flask-Script
