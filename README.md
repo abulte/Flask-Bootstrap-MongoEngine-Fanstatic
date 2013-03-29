@@ -30,5 +30,4 @@ Go to <http://localhost:4000>. Default admin user/password is: admin@admin.com/s
 
 ## TODO
 
-* Split files structure for models, views and configuration
 * Blueprints?
