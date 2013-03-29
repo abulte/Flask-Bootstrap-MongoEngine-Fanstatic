@@ -1,6 +1,6 @@
 from flask.ext.script import Manager, Server
 from application import app
-from application import User
+from application.models import User
 
 manager = Manager(app)
 
