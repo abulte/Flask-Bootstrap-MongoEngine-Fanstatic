@@ -9,7 +9,10 @@ Bootstraps a simple [Flask](http://flask.pocoo.org) app with:
 * Administration interface via [Flask-SuperAdmin](http://flask-superadmin.readthedocs.org/en/latest/)
 * Authentification with [Flask-Login](http://flask-login.readthedocs.org/en/latest/)
 
-## Usage
+It is also [Dotcloud](https://www.dotcloud.com)-ready.
+
+
+## Standard usage
 
 You need a running MongoDB server.
 
@@ -21,6 +24,18 @@ You need a running MongoDB server.
 	python manage.py runserver
 
 Go to <http://localhost:4000>. Default admin user/password is: admin@admin.com/secret.
+
+## Dotcloud usage
+
+You need a Dotcloud (free) account.
+
+	git clone https://github.com/abulte/Flask-Bootstrap-MongoEngine-Fanstatic.git
+	cd Flask-Bootstrap-MongoEngine-Fanstatic
+	dotcloud create flaskmongo #answer Y
+	dotcloud push
+	# wait for the end of the build
+	dotcloud run data python manage.py create_admin_user
+	
 	
 ## Features
 

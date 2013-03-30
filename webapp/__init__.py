@@ -7,14 +7,22 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+import os
 from flask import Flask
 from flask_fanstatic import Fanstatic
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.login import LoginManager
 
-from .settings import get_config
 
 ##- Init and configure -##
+
+def get_config():
+    if os.environ.get('FLASK_ENV', '') == 'PROD':
+        return 'webapp.settings.ProductionConfig'
+    elif os.environ.get('FLASK_ENV', '') == 'DOTCLOUD':
+        return 'webapp.settings.DotcloudConfig'
+    else:
+        return 'webapp.settings.DevelopmentConfig'
 
 app = Flask(__name__)
 app.config.from_object(get_config())
@@ -23,7 +31,7 @@ db = MongoEngine(app)
 ##- Login -##
 
 login_manager = LoginManager()
-login_manager.setup_app(app)
+login_manager.init_app(app)
 login_manager.login_view = "login"
 
 ##- Resources -##

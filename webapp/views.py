@@ -10,7 +10,7 @@
 from flask import render_template, \
     redirect, request, url_for, flash
 
-from application import app
+from webapp import app
 from .forms import DummyContentForm, LoginForm
 from .models import DummyContent, User
 from flask.ext.login import login_user, login_required, \

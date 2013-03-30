@@ -11,7 +11,7 @@ from flask.ext.superadmin import Admin, AdminIndexView
 from flask.ext.superadmin.model.backends.mongoengine import ModelAdmin
 from flask.ext.login import current_user
 
-from application import app
+from webapp import app
 from .models import User, DummyContent
 
 # Create customized model view class

@@ -8,7 +8,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from mongoengine.queryset import DoesNotExist
-from application import db, login_manager
+from webapp import db, login_manager
 
 class DummyContent(db.Document):
     title = db.StringField(required=True, max_length=50)

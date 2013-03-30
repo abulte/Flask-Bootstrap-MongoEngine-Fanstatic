@@ -1,0 +1,8 @@
+www:
+  type: python
+  config:
+    python_version: v2.7
+  environment:
+    FLASK_ENV: DOTCLOUD
+data:
+  type: mongodb
