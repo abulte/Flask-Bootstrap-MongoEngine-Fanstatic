@@ -44,7 +44,7 @@ class DotcloudConfig(ProductionConfig):
         app.logger.error('unable to load file : %s, exception : %s' % (format(dotcloud_env_file_path), e))
 
     # You should not use "/admin" user for production env.
-    MONGODB_SETTINGS = dict(host=dotcloud_env['DOTCLOUD_DATA_MONGODB_URL'] + '/admin', db='flask_db')
+    MONGODB_SETTINGS = dict(host=dotcloud_env.get('DOTCLOUD_DATA_MONGODB_URL','novalue') + '/admin', db='flask_db')
 
 class DevelopmentConfig(GenericConfig):
     DEBUG = True
