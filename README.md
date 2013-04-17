@@ -45,4 +45,6 @@ You need a Dotcloud (free) account.
 
 ## TODO
 
+* Flask-Security
+* Debug-Toolbar
 * Blueprints?
