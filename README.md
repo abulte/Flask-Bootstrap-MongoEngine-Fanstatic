@@ -1,3 +1,7 @@
+```
+DEPRECATED in favor of https://github.com/abulte/flask-quickstart
+```
+
 # Flask Bootstrap MongoEngine Fanstatic
 
 ## Purpose
